@@ -12,12 +12,12 @@
 <main class="app">
 <section id="screen-start">
 <div class="header"><div class="header-inner"><div class="header-text"><div class="label">台えらびサポート</div><h1>遊び方診断</h1><p class="lead">かんたんな質問に答えると、現在設置中の一部機種から遊び方に近い機種を表示します。</p></div><div class="header-illust"><img src="guide_character.png" alt="案内イラスト"></div></div></div>
-<div class="card"><p>今日の気分や遊び方に合わせて、店内の設置機種を探しやすくするための案内です。</p><div class="notice">※この表示は、出玉・設定・当たりやすさ・遊技結果を示すものではありません。<br>※表示内容は、現在設置中の一部機種を対象とした案内です。</div><div class="start-actions"><button class="primary" onclick="startDiagnosis()">診断をはじめる</button><button class="ghost" onclick="showAllMachines()">表示対象機種を確認する</button></div></div>
+<div class="card"><p>表示結果は、機種選びの参考としてご覧ください。</p><div class="notice">※この表示は、出玉・設定・当たりやすさ・遊技結果を示すものではありません。<br>※表示内容は、現在設置中の一部機種を対象とした案内です。</div><div class="start-actions"><button class="primary" onclick="startDiagnosis()">診断をはじめる</button><button class="ghost" onclick="showAllMachines()">表示対象機種を確認する</button></div></div>
 <div class="admin-note">管理メモ：固定データ版です。機種データはHTML内の <code>MACHINES</code> を差し替えて更新します。</div>
 </section>
 <section id="screen-question" class="hide"><div class="card"><div class="progress-wrap"><div class="progress-text" id="progress-text"></div><div class="progress"><div class="progress-bar" id="progress-bar"></div></div></div><h2 class="question-title" id="question-title"></h2><p class="question-sub" id="question-sub"></p><div class="options" id="options"></div><div class="nav"><button class="ghost" onclick="prevQuestion()">戻る</button><button class="secondary" onclick="restart()">最初から</button></div></div></section>
 <section id="screen-result" class="hide"><div class="card"><div class="result-head"><h2>あなたの遊び方に近い設置機種はこちら</h2><p>回答内容に近い機種を表示しています。</p></div><div id="results"></div><div class="notice">※この表示は、お客様の選択内容に基づき、現在設置中の機種を探しやすくするための案内です。<br>※出玉・設定・当たりやすさ・遊技結果を示すものではありません。</div><div class="start-actions"><button class="primary" onclick="restart()">もう一度診断する</button><button class="ghost" onclick="showStart()">トップに戻る</button></div></div></section>
-<p class="footer-note">遊び方診断 固定データ版 実データ反映 v6 透過イラスト標準サイズ版</p>
+<p class="footer-note">遊び方診断 固定データ版 実データ反映 v8 DMMリンクボタン追加版</p>
 </main>
 <script>
 const MACHINES=[
@@ -31,7 +31,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4874"
   },
   {
     "name": "P Re:ゼロから始める異世界生活 鬼がかりver.",
@@ -43,19 +44,21 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4046"
   },
   {
     "name": "e Re:ゼロから始める異世界生活 season2",
     "type": "パチンコ",
     "lend": "4円P",
     "location": "4円P",
-    "count": "2",
+    "count": "1",
     "category": "スマパチ",
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4457"
   },
   {
     "name": "e一方通行 とある魔術の禁書目録",
@@ -67,7 +70,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4816"
   },
   {
     "name": "Pとある魔術の禁書目録2",
@@ -79,7 +83,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4485"
   },
   {
     "name": "Pとある科学の超電磁砲2",
@@ -91,7 +96,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4628"
   },
   {
     "name": "Pとある科学の超電磁砲",
@@ -103,7 +109,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4068"
   },
   {
     "name": "Pとある魔術の禁書目録 Light PREMIUM ver.",
@@ -115,7 +122,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4069"
   },
   {
     "name": "新世紀エヴァンゲリオン〜未来への咆哮〜",
@@ -127,19 +135,21 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4021"
   },
   {
-    "name": "PフィーバークィーンRUSH",
+    "name": "e女神のカフェテラス",
     "type": "パチンコ",
     "lend": "4円P",
     "location": "4円P",
     "count": "1",
-    "category": "パチンコ一般",
-    "clarity": "標準",
-    "playStyle": "バランス",
+    "category": "スマパチ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4848"
   },
   {
     "name": "Pゴジラ対エヴァンゲリオン〜G細胞覚醒〜",
@@ -151,7 +161,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4257"
   },
   {
     "name": "PAスーパー海物語IN地中海2",
@@ -163,7 +174,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4587"
   },
   {
     "name": "PフィーバークィーンⅡ 30th ANNIVERSARY EDITIO…",
@@ -175,7 +187,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4364"
   },
   {
     "name": "PA大海物語4スペシャル Withアグネス・ラム",
@@ -187,7 +200,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3807"
   },
   {
     "name": "P大海物語4スペシャルBLACK",
@@ -199,7 +213,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3882"
   },
   {
     "name": "eフィーバー炎炎ノ消防隊2 紅丸ver.",
@@ -211,7 +226,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4811"
   },
   {
     "name": "eフィーバー機動戦士ガンダムユニコーン 再来-白き一角獣と黒き獅子-",
@@ -223,7 +239,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4615"
   },
   {
     "name": "e真・北斗無双 第5章 ドデカSTART",
@@ -235,7 +252,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4758"
   },
   {
     "name": "Pフィーバー炎炎ノ消防隊",
@@ -247,7 +265,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4322"
   },
   {
     "name": "Pリング 呪いの7日間3 ラッキートリガーVer.",
@@ -259,7 +278,21 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4626"
+  },
+  {
+    "name": "PフィーバークィーンRUSH",
+    "type": "パチンコ",
+    "lend": "4円P",
+    "location": "4円P",
+    "count": "1",
+    "category": "パチンコ一般",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "こだわらない",
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4231"
   },
   {
     "name": "P新世紀エヴァンゲリオン〜未来への咆哮〜PREMIUM MODEL",
@@ -271,7 +304,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4498"
   },
   {
     "name": "ぱちんこ シン・エヴァンゲリオン PREMIUM MODEL",
@@ -283,7 +317,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4865"
   },
   {
     "name": "P真・一騎当千～桃園の誓い～",
@@ -295,7 +330,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4388"
   },
   {
     "name": "P真・花の慶次2〜漆黒の衝撃〜EXTRA RUSH",
@@ -307,7 +343,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4003"
   },
   {
     "name": "Pフィーバーパワフル",
@@ -319,7 +356,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4509"
   },
   {
     "name": "PフィーバークィーンⅡ（2020年）",
@@ -331,7 +369,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3732"
   },
   {
     "name": "P宇宙戦艦ヤマト2202 -ONLY ONE- LIGHT Ver.",
@@ -343,7 +382,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4309"
   },
   {
     "name": "PAフィーバー機動戦士ガンダム 逆襲のシャア Light ver.",
@@ -355,7 +395,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3631"
   },
   {
     "name": "P神・天才バカボン〜甘神SPEC〜",
@@ -367,7 +408,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4308"
   },
   {
     "name": "PAうる星やつら～ラムのLoveSong～",
@@ -379,7 +421,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3692"
   },
   {
     "name": "P真・一騎当千 Light Ver.",
@@ -391,7 +434,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4475"
   },
   {
     "name": "Pルパン三世 銭形からの招待状 77Sweet Ver.",
@@ -403,7 +447,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4612"
   },
   {
     "name": "PAスーパー海物語IN地中海",
@@ -415,7 +460,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3630"
   },
   {
     "name": "Pスーパー海物語IN沖縄2",
@@ -427,7 +473,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3267"
   },
   {
     "name": "Pスーパー海物語 IN JAPAN 2 金富士 199バージョン",
@@ -439,7 +486,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3697"
   },
   {
     "name": "PA元祖ギンギラパラダイス 強99ver.",
@@ -451,7 +499,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4336"
   },
   {
     "name": "PAスーパー海物語 IN JAPAN2 with 太鼓の達人",
@@ -463,7 +512,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3517"
   },
   {
     "name": "P大海物語5 ブラック",
@@ -475,7 +525,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4444"
   },
   {
     "name": "P大海物語5",
@@ -487,7 +538,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4293"
   },
   {
     "name": "e ソードアート・オンライン 閃光の軌跡",
@@ -499,7 +551,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4687"
   },
   {
     "name": "e花の慶次 裂 一刀両断",
@@ -511,7 +564,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4363"
   },
   {
     "name": "e東京リベンジャーズ",
@@ -523,7 +577,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4796"
+  },
+  {
+    "name": "e北斗の拳10",
+    "type": "パチンコ",
+    "lend": "4円P",
+    "location": "4円P",
+    "count": "1",
+    "category": "北斗系",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "版権重視",
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4567"
   },
   {
     "name": "e義風堂々!!〜兼続と慶次〜3",
@@ -535,7 +603,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4408"
   },
   {
     "name": "e花の慶次〜傾奇一転",
@@ -547,7 +616,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4593"
   },
   {
     "name": "eようこそ実力至上主義の教室へ",
@@ -559,7 +629,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4936"
   },
   {
     "name": "Pフィーバー 機動戦士ガンダムユニコーン",
@@ -571,7 +642,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3937"
   },
   {
     "name": "Pリング　バースデイ　呪いの始まりFRX設定付",
@@ -583,7 +655,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3484"
   },
   {
     "name": "P中森明菜・歌姫伝説〜THE BEST LEGEND〜",
@@ -595,7 +668,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3849"
   },
   {
     "name": "PA花の慶次〜蓮",
@@ -607,7 +681,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3797"
   },
   {
     "name": "Pギルティクラウン2 プレミアムライブチケット",
@@ -619,7 +694,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4574"
   },
   {
     "name": "Pフィーバーゴルゴ13 Light ver.",
@@ -631,7 +707,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4036"
   },
   {
     "name": "PA豊丸ととある企業の最新作2 SOD 99ver.",
@@ -643,7 +720,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4438"
   },
   {
     "name": "PA真・怪獣王ゴジラNL-K1",
@@ -655,19 +733,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
-  },
-  {
-    "name": "e蒼天の拳 羅龍",
-    "type": "パチンコ",
-    "lend": "4円P",
-    "location": "4円P",
-    "count": "1",
-    "category": "スマパチ",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3745"
   },
   {
     "name": "e 北斗の拳11 暴凶星",
@@ -679,7 +746,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4897"
   },
   {
     "name": "eゴッドイーター TRIPLE BURST",
@@ -691,7 +759,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4625"
   },
   {
     "name": "eぱちんこ押忍！番長 漢の頂",
@@ -703,7 +772,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4714"
   },
   {
     "name": "e 魔法少女まどか☆マギカ3 時間遡行〜始まりの願い〜",
@@ -715,7 +785,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4966"
   },
   {
     "name": "e 東京喰種",
@@ -727,7 +798,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "版権重視",
-    "text": "作品の世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "作品の世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4782"
   },
   {
     "name": "eフィーバーからくりサーカス2 魔王ver.",
@@ -739,7 +811,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4649"
   },
   {
     "name": "e 乃木坂46 Ⅱ",
@@ -751,10 +824,11 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4636"
   },
   {
-    "name": "Ａ大海物語５ＡＲＢＣ",
+    "name": "PA大海物語5 Withアグネス・ラム",
     "type": "パチンコ",
     "lend": "プラスワン",
     "location": "プラスワン",
@@ -763,7 +837,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4358"
   },
   {
     "name": "PA大海物語4スペシャル Withアグネス・ラム",
@@ -775,7 +850,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3807"
   },
   {
     "name": "PAスーパー海物語 IN JAPAN2 with 太鼓の達人",
@@ -787,7 +863,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3517"
   },
   {
     "name": "PAスーパー海物語IN地中海",
@@ -799,7 +876,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3630"
   },
   {
     "name": "PA海物語3R2スペシャル",
@@ -811,7 +889,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4005"
   },
   {
     "name": "PAドラム海物語IN JAPAN",
@@ -823,7 +902,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3752"
   },
   {
     "name": "PA海物語3R2",
@@ -835,7 +915,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3587"
   },
   {
     "name": "PAスーパー海物語 IN 沖縄5 with アイマリン",
@@ -847,7 +928,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3934"
   },
   {
     "name": "Pスーパー海物語IN沖縄2",
@@ -859,7 +941,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3267"
   },
   {
     "name": "PAわんわんパラダイスCELEBRATION",
@@ -871,19 +954,34 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4627"
   },
   {
-    "name": "P神・天才バカボン〜甘神SPEC〜",
+    "name": "eフィーバー彼女、お借りします",
     "type": "パチンコ",
     "lend": "プラスワン",
     "location": "プラスワン",
-    "count": "2",
-    "category": "パチンコ一般",
+    "count": "1",
+    "category": "スマパチ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4785"
+  },
+  {
+    "name": "Pゴジラ対エヴァンゲリオン〜G細胞覚醒〜",
+    "type": "パチンコ",
+    "lend": "プラスワン",
+    "location": "プラスワン",
+    "count": "1",
+    "category": "エヴァ系",
     "clarity": "標準",
     "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "effectType": "版権重視",
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4257"
   },
   {
     "name": "PAスーパー海物語IN地中海2",
@@ -895,7 +993,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4587"
   },
   {
     "name": "Pスーパー海物語 IN 沖縄5",
@@ -907,7 +1006,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3904"
   },
   {
     "name": "P大海物語5 ブラック",
@@ -919,7 +1019,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4444"
   },
   {
     "name": "P大海物語4スペシャルBLACK",
@@ -931,7 +1032,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3882"
   },
   {
     "name": "Pスーパー海物語 IN JAPAN 2 金富士 199バージョン",
@@ -943,7 +1045,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3697"
   },
   {
     "name": "新世紀エヴァンゲリオン〜未来への咆哮〜",
@@ -955,7 +1058,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4021"
   },
   {
     "name": "PフィーバークィーンⅡ（2020年）",
@@ -967,7 +1071,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3732"
   },
   {
     "name": "PA乗物娘77ver.",
@@ -979,7 +1084,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3969"
   },
   {
     "name": "P牙狼MUSEUM",
@@ -991,7 +1097,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4207"
   },
   {
     "name": "P Re:ゼロから始める異世界生活 鬼がかりver.",
@@ -1003,7 +1110,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4046"
   },
   {
     "name": "P真・一騎当千 Light Ver.",
@@ -1015,7 +1123,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4475"
   },
   {
     "name": "Pとある魔術の禁書目録2",
@@ -1027,7 +1136,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4485"
   },
   {
     "name": "Pとある科学の超電磁砲",
@@ -1039,7 +1149,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4068"
   },
   {
     "name": "Pとある魔術の禁書目録 Light PREMIUM ver.",
@@ -1051,7 +1162,21 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4069"
+  },
+  {
+    "name": "P神・天才バカボン〜甘神SPEC〜",
+    "type": "パチンコ",
+    "lend": "プラスワン",
+    "location": "プラスワン",
+    "count": "2",
+    "category": "パチンコ一般",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "こだわらない",
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4308"
   },
   {
     "name": "Pフィーバーパワフル",
@@ -1063,7 +1188,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4509"
   },
   {
     "name": "PA元祖ギンギラパラダイス 強99ver.",
@@ -1075,7 +1201,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4336"
   },
   {
     "name": "P貞子",
@@ -1087,7 +1214,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4586"
   },
   {
     "name": "P牙狼GOLD IMPACT",
@@ -1099,7 +1227,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4295"
   },
   {
     "name": "P魔王学院の不適合者",
@@ -1111,7 +1240,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4578"
   },
   {
     "name": "Pフィーバーからくりサーカス",
@@ -1123,7 +1253,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4170"
   },
   {
     "name": "P真・一騎当千～桃園の誓い～",
@@ -1135,7 +1266,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4388"
   },
   {
     "name": "PA花の慶次〜蓮",
@@ -1147,7 +1279,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3797"
   },
   {
     "name": "PA豊丸ととある企業の最新作2 SOD 99ver.",
@@ -1159,7 +1292,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4438"
   },
   {
     "name": "P緋弾のアリア～緋弾覚醒編～319ver. JMZ",
@@ -1171,7 +1305,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4233"
   },
   {
     "name": "P真・花の慶次3",
@@ -1183,7 +1318,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4045"
   },
   {
     "name": "Pフィーバー炎炎ノ消防隊",
@@ -1195,19 +1331,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
-  },
-  {
-    "name": "e東京リベンジャーズ",
-    "type": "パチンコ",
-    "lend": "プラスワン",
-    "location": "プラスワン",
-    "count": "1",
-    "category": "スマパチ",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4322"
   },
   {
     "name": "e一方通行 とある魔術の禁書目録",
@@ -1219,19 +1344,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4816"
   },
   {
-    "name": "e北斗の拳10",
+    "name": "e Re:ゼロから始める異世界生活 season2",
     "type": "パチンコ",
     "lend": "プラスワン",
     "location": "プラスワン",
     "count": "1",
-    "category": "北斗系",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "category": "スマパチ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4457"
   },
   {
     "name": "P北斗の拳 暴凶星",
@@ -1243,7 +1370,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4332"
   },
   {
     "name": "Pフィーバー戦姫絶唱シンフォギア3黄金絶唱",
@@ -1255,7 +1383,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4195"
   },
   {
     "name": "P真・花の慶次3 99ver.",
@@ -1267,7 +1396,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4469"
   },
   {
     "name": "Pリング 呪いの7日間2 FSA",
@@ -1279,7 +1409,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3759"
   },
   {
     "name": "Pとある魔術の禁書目録JUA",
@@ -1291,7 +1422,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3758"
   },
   {
     "name": "Pとある科学の超電磁砲2",
@@ -1303,7 +1435,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4628"
   },
   {
     "name": "Pルパン三世〜神々への予告状〜甘デジ",
@@ -1315,7 +1448,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3639"
   },
   {
     "name": "Pフィーバー アイドルマスター ミリオンライブ！ Light ver.",
@@ -1327,7 +1461,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4110"
   },
   {
     "name": "PAうる星やつら～ラムのLoveSong～",
@@ -1339,7 +1474,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3692"
   },
   {
     "name": "Pうる星やつら～ラムのLoveSong～",
@@ -1351,7 +1487,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3440"
   },
   {
     "name": "P花の慶次〜蓮 199ver.",
@@ -1363,7 +1500,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3896"
   },
   {
     "name": "P真・黄門ちゃま 甘デジ",
@@ -1375,7 +1513,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3811"
   },
   {
     "name": "P真・北斗無双 第3章",
@@ -1387,7 +1526,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3769"
   },
   {
     "name": "Pフィーバーダンジョンに出会いを求めるのは間違っているだろうか",
@@ -1399,7 +1539,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4126"
   },
   {
     "name": "P信長の野望-創造- N-K",
@@ -1411,7 +1552,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3400"
   },
   {
     "name": "Pフィーバー機動戦士ガンダムSEED",
@@ -1423,7 +1565,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4381"
   },
   {
     "name": "P聖戦士ダンバイン2 -ZEROLIMIT HYPER-",
@@ -1435,7 +1578,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4312"
   },
   {
     "name": "Pフィーバーマクロスフロンティア5",
@@ -1447,19 +1591,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
-  },
-  {
-    "name": "Pフィーバー 機動戦士ガンダムユニコーン",
-    "type": "パチンコ",
-    "lend": "プラスワン",
-    "location": "プラスワン",
-    "count": "1",
-    "category": "パチンコ一般",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4528"
   },
   {
     "name": "P戦国乙女5 甘デジ",
@@ -1471,7 +1604,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3670"
   },
   {
     "name": "P新世紀エヴァンゲリオン〜未来への咆哮〜PREMIUM MODEL",
@@ -1483,7 +1617,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。"
+    "text": "シリーズの演出や世界観を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4498"
   },
   {
     "name": "P緋弾のアリア～緋弾覚醒編～",
@@ -1495,7 +1630,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3845"
   },
   {
     "name": "Pデビルマン黄金黙示録",
@@ -1507,7 +1643,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4392"
   },
   {
     "name": "PA元祖大工の源さん",
@@ -1519,7 +1656,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3562"
   },
   {
     "name": "P結城友奈は勇者である",
@@ -1531,7 +1669,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3756"
   },
   {
     "name": "P CYBORG009 CALL OF JUSTICE HI-SPEE…",
@@ -1543,7 +1682,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3481"
   },
   {
     "name": "Pおばけらんど怪XA",
@@ -1555,7 +1695,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3477"
   },
   {
     "name": "Pフィーバー戦姫絶唱シンフォギア",
@@ -1567,7 +1708,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3803"
   },
   {
     "name": "PAフィーバーアクエリオン ALL STARS LIGHTver.",
@@ -1579,7 +1721,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3717"
   },
   {
     "name": "P中森明菜・歌姫伝説〜BLACK DIVA愛〜",
@@ -1591,7 +1734,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4652"
   },
   {
     "name": "Pキャッツ・アイ〜最高のお宝、頂きに上がります〜 Sweet Trea…",
@@ -1603,7 +1747,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3499"
   },
   {
     "name": "PAぶいぶい!ゴジラ かいじゅう大集合!! N4-K6",
@@ -1615,7 +1760,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3588"
   },
   {
     "name": "Pわんニャンアドベンチャー",
@@ -1627,7 +1773,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4354"
   },
   {
     "name": "PA野生の王国 GO 99ver.",
@@ -1639,7 +1786,21 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "こだわらない",
-    "text": "気軽に遊びたい方にも見つけやすいタイプです。"
+    "text": "気軽に遊びたい方にも見つけやすいタイプです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4025"
+  },
+  {
+    "name": "パチスロ 革命機ヴァルヴレイヴ",
+    "type": "スロット",
+    "lend": "20S",
+    "location": "20S",
+    "count": "2",
+    "category": "通常スロット",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4244"
   },
   {
     "name": "ジャグラーガールズSS",
@@ -1651,7 +1812,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4540"
   },
   {
     "name": "スマスロ 一方通行 とある魔術の禁書目録",
@@ -1663,7 +1825,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4686"
   },
   {
     "name": "スマスロとある魔術の禁書目録",
@@ -1675,7 +1838,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4445"
   },
   {
     "name": "スマスロ北斗の拳",
@@ -1687,7 +1851,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4301"
   },
   {
     "name": "パチスロ甲鉄城のカバネリ",
@@ -1699,7 +1864,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4160"
   },
   {
     "name": "パチスロ からくりサーカス",
@@ -1711,31 +1877,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロ 革命機ヴァルヴレイヴ",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L押忍！番長ZERO",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "6",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4360"
   },
   {
     "name": "SLOTバジリスク～甲賀忍法帖～絆2",
@@ -1747,55 +1890,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
-  },
-  {
-    "name": "スマスロ バイオハザード5",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "7",
-    "category": "スマスロ",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "スマスロモンキーターンV",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "3",
-    "category": "版権AT系",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "版権重視",
-    "text": "作品の世界観や演出を楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L 東京喰種",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lパチスロガールズ＆パンツァー 最終章",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3616"
   },
   {
     "name": "アイムジャグラーEX",
@@ -1807,7 +1903,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3626"
   },
   {
     "name": "ゴーゴージャグラー3",
@@ -1819,7 +1916,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4375"
   },
   {
     "name": "マイジャグラーⅤ",
@@ -1831,7 +1929,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4029"
   },
   {
     "name": "ハッピージャグラーVⅢ",
@@ -1843,7 +1942,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4230"
   },
   {
     "name": "ファンキージャグラー2",
@@ -1855,7 +1955,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/3961"
   },
   {
     "name": "ウルトラミラクルジャグラー",
@@ -1867,7 +1968,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4683"
   },
   {
     "name": "ネオアイムジャグラーEX",
@@ -1879,7 +1981,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4801"
   },
   {
     "name": "ミスタージャグラー",
@@ -1891,7 +1994,21 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。"
+    "text": "告知を楽しむ分かりやすいゲーム性のシリーズです。",
+    "infoUrl": "https://p-town.dmm.com/machines/4588"
+  },
+  {
+    "name": "スマスロ バイオハザード5",
+    "type": "スロット",
+    "lend": "20S",
+    "location": "20S",
+    "count": "7",
+    "category": "スマスロ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4754"
   },
   {
     "name": "L戦国乙女4 戦乱に閃く炯眼の軍師",
@@ -1903,7 +2020,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4395"
   },
   {
     "name": "スマスロ 新鬼武者3",
@@ -1915,7 +2033,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4880"
   },
   {
     "name": "パチスロ かぐや様は告らせたい",
@@ -1927,31 +2046,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L吉宗",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "4",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "スマスロスーパーブラックジャック",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "4",
-    "category": "スマスロ",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4618"
   },
   {
     "name": "スマスロ ゴッドイーター リザレクション",
@@ -1963,7 +2059,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4602"
+  },
+  {
+    "name": "スマスロモンキーターンV",
+    "type": "スロット",
+    "lend": "20S",
+    "location": "20S",
+    "count": "3",
+    "category": "版権AT系",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "版権重視",
+    "text": "作品の世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4450"
   },
   {
     "name": "スマスロ モンスターハンターライズ",
@@ -1975,19 +2085,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4676"
   },
   {
-    "name": "L押忍！番長4",
+    "name": "スマスロスーパーブラックジャック",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
     "count": "3",
-    "category": "スマスロ系",
+    "category": "スマスロ",
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4712"
   },
   {
     "name": "L主役は銭形4",
@@ -1999,7 +2111,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4335"
+  },
+  {
+    "name": "L 東京喰種",
+    "type": "スロット",
+    "lend": "20S",
+    "location": "20S",
+    "count": "2",
+    "category": "スマスロ系",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4742"
   },
   {
     "name": "Lパチスロ 革命機ヴァルヴレイヴ2",
@@ -2011,7 +2137,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4885"
   },
   {
     "name": "Lパチスロ炎炎ノ消防隊",
@@ -2023,7 +2150,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4555"
   },
   {
     "name": "スマスロ マギアレコード 魔法少女まどか☆マギカ外伝",
@@ -2035,19 +2163,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lアレックス ブライト",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4745"
   },
   {
     "name": "Lラブ嬢3〜Wご指名はいかがですか？〜",
@@ -2059,10 +2176,11 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4458"
   },
   {
-    "name": "LHEY！エリートサラリーマン鏡",
+    "name": "Lパチスロガールズ＆パンツァー 最終章",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
@@ -2071,19 +2189,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LGI優駿倶楽部黄金",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4488"
   },
   {
     "name": "スマスロバジリスク～甲賀忍法帖～絆2 天膳 BLACK EDITION",
@@ -2095,7 +2202,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4466"
   },
   {
     "name": "スマスロ交響詩篇エウレカセブン4 HI-EVOLUTION",
@@ -2107,7 +2215,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4539"
   },
   {
     "name": "L ひぐらしのなく頃に 業",
@@ -2119,7 +2228,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4447"
   },
   {
     "name": "スマスロ 鬼武者3",
@@ -2131,7 +2241,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4640"
   },
   {
     "name": "スマスロ頭文字D 2nd",
@@ -2143,7 +2254,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4635"
   },
   {
     "name": "スマスロ 東京リベンジャーズ",
@@ -2155,7 +2267,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4849"
   },
   {
     "name": "スマスロ バイオハザードヴィレッジ",
@@ -2167,31 +2280,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L忍魂参 ～奥義皆伝ノ章～",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lいざ！番長",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4459"
   },
   {
     "name": "L大工の源さん超夢源",
@@ -2203,7 +2293,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4428"
   },
   {
     "name": "スマスロ 化物語",
@@ -2215,7 +2306,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4898"
   },
   {
     "name": "スマスロ鉄拳6",
@@ -2227,7 +2319,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4913"
   },
   {
     "name": "L ゴジラ対エヴァンゲリオン",
@@ -2239,7 +2332,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4501"
   },
   {
     "name": "L ToLOVEるダークネス TRANCE ver.8.7",
@@ -2251,7 +2345,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4806"
   },
   {
     "name": "L ToLOVEるダークネス",
@@ -2263,7 +2358,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4571"
   },
   {
     "name": "Lパチスロ 炎炎ノ消防隊2",
@@ -2275,7 +2371,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4926"
   },
   {
     "name": "スマスロ 甲鉄城のカバネリ 海門（うなと）決戦",
@@ -2287,7 +2384,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4930"
   },
   {
     "name": "スマスロ ストリートファイターV 挑戦者の道",
@@ -2299,7 +2397,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4583"
   },
   {
     "name": "スマスロ 北斗の拳 転生の章2",
@@ -2311,7 +2410,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4909"
   },
   {
     "name": "スマスロ ハナビ",
@@ -2323,7 +2423,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4928"
   },
   {
     "name": "SHAKE BONUS TRIGGER",
@@ -2335,31 +2436,21 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4893"
   },
   {
-    "name": "LA-SLOT+ ディスクアップ ULTRAREMIX",
+    "name": "A-SLOT+ ディスクアップ ULTRAREMIX",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
     "count": "1",
-    "category": "スマスロ系",
+    "category": "LT搭載機",
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lクレアの秘宝伝 〜はじまりの扉と太陽の石〜 ボーナストリガーver.",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "effectType": "にぎやか",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4702"
   },
   {
     "name": "スマスロニューパルサーBT",
@@ -2371,19 +2462,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L麻雀格闘倶楽部 覚醒",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4791"
   },
   {
     "name": "L南国育ち",
@@ -2395,7 +2475,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4512"
   },
   {
     "name": "Lルパン三世 大航海者の秘宝",
@@ -2407,7 +2488,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4689"
   },
   {
     "name": "スマスロ劇場版 魔法少女まどか☆マギカ[前編]始まりの物語／[後編]永…",
@@ -2419,19 +2501,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LA-SLOT＋ この素晴らしい世界に祝福を！",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4420"
   },
   {
     "name": "L 真・一騎当千",
@@ -2443,7 +2514,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4650"
   },
   {
     "name": "Lパチスロ戦姫絶唱シンフォギア 正義の歌",
@@ -2455,7 +2527,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4579"
   },
   {
     "name": "L ベルセルク無双",
@@ -2467,7 +2540,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4367"
   },
   {
     "name": "L リングにかけろ1V",
@@ -2479,7 +2553,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4460"
   },
   {
     "name": "Lバキ 強くなりたくば喰らえ!!!",
@@ -2491,7 +2566,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4242"
   },
   {
     "name": "スマスロ真・北斗無双",
@@ -2503,7 +2579,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4577"
   },
   {
     "name": "Lパチスロ マクロスフロンティア4",
@@ -2515,7 +2592,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4464"
   },
   {
     "name": "パチスロ炎炎ノ消防隊",
@@ -2527,7 +2605,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4326"
   },
   {
     "name": "パチスロ交響詩篇エウレカセブン HI-EVOLUTION ZERO T…",
@@ -2539,7 +2618,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4419"
   },
   {
     "name": "パチスロハイパーラッシュ",
@@ -2551,7 +2631,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4617"
   },
   {
     "name": "SLOT劇場版 魔法少女まどか☆マギカ[前編]始まりの物語／[後編]永…",
@@ -2563,7 +2644,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3931"
   },
   {
     "name": "パチスロこの素晴らしい世界に祝福を！",
@@ -2575,70 +2657,37 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4097"
   },
   {
     "name": "パチスロ 新鬼武者2",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
-    "count": "2",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロ沖ドキ！DUO",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "2",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロ対魔導学園35試験小隊",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
     "count": "1",
     "category": "通常スロット",
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロアカメが斬る！",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4178"
   },
   {
     "name": "パチスロ頭文字D",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
-    "count": "1",
+    "count": "2",
     "category": "通常スロット",
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3779"
   },
   {
-    "name": "パチスロ～ガールズケイリン～ＧⅠフェアリーグランプリ",
+    "name": "SLOTとある科学の超電磁砲",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
@@ -2647,10 +2696,11 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4247"
   },
   {
-    "name": "パチスロ ダンジョンに出会いを求めるのは間違っているだろうか2",
+    "name": "SLOT忍者じゃじゃ丸くん",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
@@ -2659,46 +2709,11 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性や演出を確認しながら、好みに合わせて選びやすい機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4525"
   },
   {
-    "name": "パチスロSLOTとある科学の超電磁砲",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロSLOT忍者じゃじゃ丸くん",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロバーサスリヴァイズ",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロS Lucky海物語",
+    "name": "S Lucky海物語",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
@@ -2707,7 +2722,8 @@ const MACHINES=[
     "clarity": "分かりやすい",
     "playStyle": "ゆっくり",
     "effectType": "シンプル",
-    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。"
+    "text": "シンプルな演出で、落ち着いて遊びたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3788"
   },
   {
     "name": "パチスロ ケロット4",
@@ -2719,19 +2735,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロもっと！クレアの秘宝伝 女神の歌声と太陽の子供達",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/3629"
   },
   {
     "name": "パチスロ ガメラ2",
@@ -2743,10 +2748,11 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4504"
   },
   {
-    "name": "パチスロワードオブライツⅡ",
+    "name": "パチスロ ダンジョンに出会いを求めるのは間違っているだろうか2",
     "type": "スロット",
     "lend": "20S",
     "location": "20S",
@@ -2755,19 +2761,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "パチスロ傷物語 始マリノ刻",
-    "type": "スロット",
-    "lend": "20S",
-    "location": "20S",
-    "count": "1",
-    "category": "通常スロット",
-    "clarity": "標準",
-    "playStyle": "バランス",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4556"
   },
   {
     "name": "パチスロ 戦国†恋姫",
@@ -2779,19 +2774,47 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4366"
   },
   {
-    "name": "スマスロ北斗の拳",
+    "name": "パチスロ傷物語 始マリノ刻",
+    "type": "スロット",
+    "lend": "20S",
+    "location": "20S",
+    "count": "1",
+    "category": "通常スロット",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4390"
+  },
+  {
+    "name": "パチスロ かぐや様は告らせたい",
     "type": "スロット",
     "lend": "プラスファイブ",
     "location": "プラスファイブ",
     "count": "2",
-    "category": "北斗系",
+    "category": "通常スロット",
     "clarity": "標準",
     "playStyle": "バランス",
-    "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4618"
+  },
+  {
+    "name": "L主役は銭形4",
+    "type": "スロット",
+    "lend": "プラスファイブ",
+    "location": "プラスファイブ",
+    "count": "1",
+    "category": "スマスロ系",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4335"
   },
   {
     "name": "L麻雀物語",
@@ -2803,7 +2826,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4777"
   },
   {
     "name": "スマスロ シャーマンキング",
@@ -2815,19 +2839,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L押忍！番長4",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "4",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4719"
   },
   {
     "name": "スマスロ 東京リベンジャーズ",
@@ -2839,7 +2852,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4849"
   },
   {
     "name": "スマスロ バイオハザード5",
@@ -2851,7 +2865,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4754"
   },
   {
     "name": "スマスロ モンスターハンターライズ",
@@ -2863,7 +2878,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4676"
   },
   {
     "name": "Lパチスロ炎炎ノ消防隊",
@@ -2875,7 +2891,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4555"
   },
   {
     "name": "スマスロスーパーブラックジャック",
@@ -2887,7 +2904,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4712"
   },
   {
     "name": "スマスロ 緑ドン VIVA!情熱南米編 REVIVAL",
@@ -2899,19 +2917,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lいざ！番長",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "3",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4763"
   },
   {
     "name": "L主役は銭形5",
@@ -2923,7 +2930,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4877"
   },
   {
     "name": "スマスロ 新鬼武者3",
@@ -2935,55 +2943,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LHEY！エリートサラリーマン鏡",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LGI優駿倶楽部黄金",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "Lパチスロガールズ＆パンツァー 最終章",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LA-SLOT＋ この素晴らしい世界に祝福を！",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4880"
   },
   {
     "name": "スマスロバジリスク～甲賀忍法帖～絆2 天膳 BLACK EDITION",
@@ -2995,7 +2956,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4466"
   },
   {
     "name": "スマスロとある魔術の禁書目録",
@@ -3007,7 +2969,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4445"
   },
   {
     "name": "スマスロ 一方通行 とある魔術の禁書目録",
@@ -3019,31 +2982,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4686"
   },
   {
-    "name": "Lパチスロ 革命機ヴァルヴレイヴ",
+    "name": "スマスロ北斗の拳",
     "type": "スロット",
     "lend": "プラスファイブ",
     "location": "プラスファイブ",
     "count": "2",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "スマスロ交響詩篇エウレカセブン4 HI-EVOLUTION",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "2",
-    "category": "スマスロ",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "category": "北斗系",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "版権重視",
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4301"
   },
   {
     "name": "L聖闘士星矢 海皇覚醒 CUSTOM EDITION",
@@ -3055,7 +3008,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4572"
   },
   {
     "name": "Lパチスロ戦姫絶唱シンフォギア 正義の歌",
@@ -3067,7 +3021,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4579"
   },
   {
     "name": "Lパチスロ 機動戦士ガンダムSEED",
@@ -3079,7 +3034,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4788"
   },
   {
     "name": "Lパチスロ マクロスフロンティア4",
@@ -3091,7 +3047,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4464"
   },
   {
     "name": "スマスロ ゴールデンカムイ",
@@ -3103,7 +3060,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4516"
   },
   {
     "name": "スマスロ コードギアス反逆のルルーシュ／復活のルルーシュ",
@@ -3115,7 +3073,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4477"
   },
   {
     "name": "スマスロ劇場版 魔法少女まどか☆マギカ[前編]始まりの物語／[後編]永…",
@@ -3127,7 +3086,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4420"
   },
   {
     "name": "Lパチスロうみねこのなく頃に2",
@@ -3139,7 +3099,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4925"
   },
   {
     "name": "スマスロネオプラネット",
@@ -3151,43 +3112,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4873"
   },
   {
-    "name": "Lバーニングエクスプレス",
+    "name": "A-SLOT+ ディスクアップ ULTRAREMIX",
     "type": "スロット",
     "lend": "プラスファイブ",
     "location": "プラスファイブ",
     "count": "1",
-    "category": "スマスロ系",
+    "category": "LT搭載機",
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "L吉宗",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
-  },
-  {
-    "name": "LA-SLOT+ ディスクアップ ULTRAREMIX",
-    "type": "スロット",
-    "lend": "プラスファイブ",
-    "location": "プラスファイブ",
-    "count": "1",
-    "category": "スマスロ系",
-    "clarity": "説明があると安心",
-    "playStyle": "メリハリ",
-    "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "effectType": "にぎやか",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4702"
   },
   {
     "name": "Lラブ嬢3〜Wご指名はいかがですか？〜",
@@ -3199,7 +3138,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4458"
   },
   {
     "name": "L大工の源さん超夢源",
@@ -3211,7 +3151,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4428"
   },
   {
     "name": "L サラリーマン金太郎",
@@ -3223,19 +3164,21 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4718"
   },
   {
-    "name": "Lスマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
+    "name": "スマスロ痛いのは嫌なので防御力に極振りしたいと思います。",
     "type": "スロット",
     "lend": "プラスファイブ",
     "location": "プラスファイブ",
     "count": "1",
-    "category": "スマスロ系",
+    "category": "スマスロ",
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4566"
   },
   {
     "name": "スマスロ 聖戦士ダンバイン",
@@ -3247,7 +3190,34 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4681"
+  },
+  {
+    "name": "Lパチスロガールズ＆パンツァー 最終章",
+    "type": "スロット",
+    "lend": "プラスファイブ",
+    "location": "プラスファイブ",
+    "count": "1",
+    "category": "スマスロ系",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4488"
+  },
+  {
+    "name": "スマスロ交響詩篇エウレカセブン4 HI-EVOLUTION",
+    "type": "スロット",
+    "lend": "プラスファイブ",
+    "location": "プラスファイブ",
+    "count": "1",
+    "category": "スマスロ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4539"
   },
   {
     "name": "L ダーリン・イン・ザ・フランキス",
@@ -3259,7 +3229,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4855"
   },
   {
     "name": "L 真・一騎当千",
@@ -3271,7 +3242,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4650"
   },
   {
     "name": "スマスロ とある科学の超電磁砲2",
@@ -3283,7 +3255,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4892"
   },
   {
     "name": "Lパチスロ 革命機ヴァルヴレイヴ2",
@@ -3295,7 +3268,34 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4885"
+  },
+  {
+    "name": "パチスロ 革命機ヴァルヴレイヴ",
+    "type": "スロット",
+    "lend": "プラスファイブ",
+    "location": "プラスファイブ",
+    "count": "1",
+    "category": "通常スロット",
+    "clarity": "標準",
+    "playStyle": "バランス",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4244"
+  },
+  {
+    "name": "スマスロ ようこそ実力至上主義の教室へ",
+    "type": "スロット",
+    "lend": "プラスファイブ",
+    "location": "プラスファイブ",
+    "count": "1",
+    "category": "スマスロ",
+    "clarity": "説明があると安心",
+    "playStyle": "メリハリ",
+    "effectType": "こだわらない",
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4770"
   },
   {
     "name": "スマスロ 鬼武者3",
@@ -3307,7 +3307,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4640"
   },
   {
     "name": "L ToLOVEるダークネス",
@@ -3319,7 +3320,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4571"
   },
   {
     "name": "スマスロ バイオハザードヴィレッジ",
@@ -3331,7 +3333,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4459"
   },
   {
     "name": "スマスロ真・北斗無双",
@@ -3343,7 +3346,8 @@ const MACHINES=[
     "clarity": "標準",
     "playStyle": "バランス",
     "effectType": "版権重視",
-    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。"
+    "text": "シリーズの世界観や演出を楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4577"
   },
   {
     "name": "Lバンドリ！",
@@ -3355,7 +3359,8 @@ const MACHINES=[
     "clarity": "説明があると安心",
     "playStyle": "メリハリ",
     "effectType": "こだわらない",
-    "text": "遊技性をじっくり楽しみたい方に向いた機種です。"
+    "text": "遊技性をじっくり楽しみたい方に向いた機種です。",
+    "infoUrl": "https://p-town.dmm.com/machines/4641"
   }
 ];
 const QUESTIONS=[
@@ -3371,9 +3376,10 @@ function renderQuestion(){const q=QUESTIONS[current];document.getElementById("qu
 function prevQuestion(){if(current===0){showStart();return}current--;renderQuestion()}
 function renderResults(){const results=getResults();const wrap=document.getElementById("results");wrap.innerHTML="";if(results.length===0){wrap.innerHTML=`<div class="empty"><p>条件に近い機種が見つかりませんでした。</p><p class="small">条件を少し広げて、もう一度お試しください。</p></div>`}else{results.forEach(item=>wrap.appendChild(createMachineCard(item)))}show("screen-result")}
 function getResults(){let candidates=MACHINES.slice();if(answers.type&&answers.type!=="any")candidates=candidates.filter(m=>m.type===answers.type);if(answers.lend&&answers.lend!=="any")candidates=candidates.filter(m=>m.lend===answers.lend);const scored=candidates.map(m=>{let score=0;if(answers.playStyle&&answers.playStyle!=="any"&&m.playStyle===answers.playStyle)score+=3;if(answers.effectType&&answers.effectType!=="any"&&m.effectType===answers.effectType)score+=3;if(answers.clarity&&answers.clarity!=="any"&&m.clarity===answers.clarity)score+=2;if(answers.effectType==="版権重視"&&String(m.category||"").includes("系"))score+=1;if(answers.playStyle==="ゆっくり"&&m.category==="海物語系")score+=1;if(answers.playStyle==="ゆっくり"&&m.category==="ジャグラー系")score+=1;return{...m,score}});return scored.sort((a,b)=>b.score-a.score||Number(b.count||0)-Number(a.count||0)).slice(0,5)}
-function createMachineCard(m){const card=document.createElement("div");card.className="machine-card";const countText=m.count?`${m.count}台`:"台数未設定";card.innerHTML=`<div class="machine-name">${escapeHtml(m.name)}</div><div class="tags"><span class="tag main">${escapeHtml(m.lend)}</span><span class="tag">${escapeHtml(m.type)}</span><span class="tag">${escapeHtml(countText)}</span></div><p class="machine-text">${escapeHtml(m.text||"遊び方の傾向が近い機種として表示しています。")}</p>`;return card}
+function createMachineCard(m){const card=document.createElement("div");card.className="machine-card";const countText=m.count?`${m.count}台`:"台数未設定";const infoUrl=String(m.infoUrl||"").trim();const infoHtml=infoUrl?`<div class="info-link-wrap"><a class="info-link" href="${escapeAttr(infoUrl)}" target="_blank" rel="noopener noreferrer">外部サイトで機種情報を確認する</a><p class="external-note">※DMMぱちタウンへ移動します</p></div>`:"";card.innerHTML=`<div class="machine-name">${escapeHtml(m.name)}</div><div class="tags"><span class="tag main">${escapeHtml(m.lend)}</span><span class="tag">${escapeHtml(m.type)}</span><span class="tag">${escapeHtml(countText)}</span></div><p class="machine-text">${escapeHtml(m.text||"遊び方の傾向が近い機種として表示しています。")}</p>${infoHtml}`;return card}
 function showAllMachines(){const wrap=document.getElementById("results");wrap.innerHTML="";MACHINES.slice(0,50).forEach(item=>wrap.appendChild(createMachineCard(item)));show("screen-result")}
 function escapeHtml(value){return String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+function escapeAttr(value){return escapeHtml(value)}
 </script>
 </body>
 </html>
