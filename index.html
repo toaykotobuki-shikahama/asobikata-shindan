@@ -12,12 +12,12 @@
 <main class="app">
 <section id="screen-start">
 <div class="header"><div class="header-inner"><div class="header-text"><div class="label">台えらびサポート</div><h1>遊び方診断</h1><p class="lead">かんたんな質問に答えると、現在設置中の一部機種から遊び方に近い機種を表示します。</p></div><div class="header-illust"><img src="guide_character.png" alt="案内イラスト"></div></div></div>
-<div class="card"><p>表示結果は、機種選びの参考としてご覧ください。</p><div class="notice">※この表示は、出玉・設定・当たりやすさ・遊技結果を示すものではありません。<br>※表示内容は、現在設置中の一部機種を対象とした案内です。</div><div class="start-actions"><button class="primary" onclick="startDiagnosis()">診断をはじめる</button><button class="ghost" onclick="showAllMachines()">表示対象機種を確認する</button></div></div>
+<div class="card"><p>表示結果は、機種選びの参考としてご覧ください。</p><div class="notice">※この表示は、出玉・設定・当たりやすさ・遊技結果を示すものではありません。<br>※表示内容は、現在設置中の一部機種を対象とした案内です。</div><div class="start-actions"><button class="primary" onclick="startDiagnosis()">診断をはじめる</button></div></div>
 <div class="admin-note">管理メモ：固定データ版です。機種データはHTML内の <code>MACHINES</code> を差し替えて更新します。</div>
 </section>
 <section id="screen-question" class="hide"><div class="card"><div class="progress-wrap"><div class="progress-text" id="progress-text"></div><div class="progress"><div class="progress-bar" id="progress-bar"></div></div></div><h2 class="question-title" id="question-title"></h2><p class="question-sub" id="question-sub"></p><div class="options" id="options"></div><div class="nav"><button class="ghost" onclick="prevQuestion()">戻る</button><button class="secondary" onclick="restart()">最初から</button></div></div></section>
 <section id="screen-result" class="hide"><div class="card"><div class="result-head"><h2>あなたの遊び方に近い設置機種はこちら</h2><p>回答内容に近い機種を表示しています。</p></div><div id="results"></div><div class="notice">※この表示は、お客様の選択内容に基づき、現在設置中の機種を探しやすくするための案内です。<br>※出玉・設定・当たりやすさ・遊技結果を示すものではありません。</div><div class="start-actions"><button class="primary" onclick="restart()">もう一度診断する</button><button class="ghost" onclick="showStart()">トップに戻る</button></div></div></section>
-<p class="footer-note">遊び方診断 固定データ版 実データ反映 v8 DMMリンクボタン追加版</p>
+<p class="footer-note">遊び方診断 本運用版 v9 DMMリンク対応</p>
 </main>
 <script>
 const MACHINES=[
